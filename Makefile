@@ -17,10 +17,3 @@ default:
 
 clean:
 	$(MAKE) -C $(KERNELDIR) M=$(PWD) clean
-
-test:
-	mount /dev/loop0 /mnt
-	cp * /mnt/root/simple 
-	$(shell qemu-system-x86_64 -s -kernel testing/bzImage -drive file=testing/rootfs.ext4 -append "root=/dev/sda")
-	umount /mnt
-endif
